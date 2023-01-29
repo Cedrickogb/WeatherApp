@@ -1,0 +1,61 @@
+<div className="relative  ">
+    <div class="static py-4 px-4 bg-gradient-to-r from-cyan-500 to-blue-500 m-[100px] md:flex md:flex-row container mx-auto ">
+        <div class="static  basis-1/4">
+            <div>
+                <input class="border-teal-500 border pr-[68px] rounded p-1" type="text" #userInput placeholder="Enter city name">
+                <button class="bg-white text-black hover:bg-teal-500 hover:text-white transition duration-700 font-semibold p-1" (click)="getCity(userInput.value)" >Search</button>
+            </div>
+            <h5 class="font-semibold text-lg">Current weather in your city</h5>
+            <h2 class="text-2xl font-bold">{{ weather.name}}, {{ weather.sys.country }}</h2>
+
+            <div class="py-[5px] ">
+                <p class="text-5xl font-bold">{{ (weather.main.temp - 32) / 1.8 | number:'1.0-0'   }} °C</p>
+                <p class="text-xl font-bold"> {{ weather.weather[0].description }}, {{weather.dt * 1000 | date:'H:mm'}}</p>
+            </div>
+
+            <div>
+                <div class="flex py-[5px]">
+                    <svg viewBox="0 0 24 24" class="h-[30px] w-[30px] " fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="2.16"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 21.5C16.1012 21.5 19.5 18.4372 19.5 14.5714C19.5 12.1555 18.2672 9.71249 16.8732 7.70906C15.4698 5.69214 13.8515 4.04821 12.9778 3.21778C12.4263 2.69364 11.5737 2.69364 11.0222 3.21779C10.1485 4.04821 8.53016 5.69214 7.1268 7.70906C5.73282 9.71249 4.5 12.1555 4.5 14.5714C4.5 18.4372 7.8988 21.5 12 21.5Z" stroke="#222222"></path> <path d="M12 18C11.4747 18 10.9546 17.8965 10.4693 17.6955C9.98396 17.4945 9.54301 17.1999 9.17157 16.8284C8.80014 16.457 8.5055 16.016 8.30448 15.5307C8.10346 15.0454 8 14.5253 8 14" stroke="#222222" stroke-linecap="round"></path> </g></svg>            
+                    <h1 class="px-2 font-semibold">Humidity:</h1>
+                    <p>{{ weather.main.humidity }} %</p>
+                </div>
+                <div class="flex py-[5px]">
+                    <svg viewBox="0 0 24 24" class="h-[30px] w-[30px] " fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="1.704"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20.6933 17.3294C21.0506 15.9959 21.0964 14.5982 20.8271 13.2442C20.5577 11.8902 19.9806 10.6164 19.1402 9.52115C18.2998 8.42593 17.2187 7.53872 15.9806 6.92815C14.7425 6.31757 13.3805 6 12 6C10.6195 6 9.25752 6.31757 8.0194 6.92815C6.78128 7.53872 5.70021 8.42593 4.85982 9.52115C4.01943 10.6164 3.44225 11.8902 3.17293 13.2442C2.90361 14.5982 2.94937 15.9959 3.30667 17.3294" stroke="#222222" stroke-linecap="round"></path> <path d="M12.7657 15.5823C13.2532 16.2916 12.9104 17.3738 12 17.9994C11.0897 18.625 9.95652 18.5571 9.46906 17.8477C8.94955 17.0917 7.15616 12.8409 6.06713 10.2114C5.86203 9.71621 6.4677 9.3 6.85648 9.669C8.92077 11.6283 12.2462 14.8263 12.7657 15.5823Z" stroke="#222222"></path> <path d="M12 6V8" stroke="#222222" stroke-linecap="round"></path> <path d="M5.63599 8.63574L7.0502 10.05" stroke="#222222" stroke-linecap="round"></path> <path d="M18.364 8.63574L16.9498 10.05" stroke="#222222" stroke-linecap="round"></path> <path d="M20.6934 17.3291L18.7615 16.8115" stroke="#222222" stroke-linecap="round"></path> <path d="M3.30664 17.3291L5.23849 16.8115" stroke="#222222" stroke-linecap="round"></path> </g></svg>                
+                    <h1 class="px-2 font-semibold">Pressure:</h1>
+                    <p>{{ weather.main.pressure }} hpa</p>
+                </div>
+                <div class="flex py-[5px]">
+                    <svg fill="#000000" class="h-[30px] w-[30px] " viewBox="0 0 24.00 24.00" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="0.00024000000000000003"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M7,15a5,5,0,0,1,10,0,1,1,0,0,1-2,0,3,3,0,0,0-6,0,1,1,0,0,1-2,0Zm11-4.586.707-.707a1,1,0,0,0-1.414-1.414L16.586,9A1,1,0,1,0,18,10.414ZM20,16h1a1,1,0,0,0,0-2H20a1,1,0,0,0,0,2ZM4,14H3a1,1,0,0,0,0,2H4a1,1,0,0,0,0-2ZM5.293,9.707,6,10.414A1,1,0,1,0,7.414,9l-.707-.707A1,1,0,0,0,5.293,9.707ZM4,18a1,1,0,0,0,1,1H19a1,1,0,0,0,0-2H5A1,1,0,0,0,4,18Zm4,3a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2ZM12,9a1,1,0,0,0,1-1V4.414l1.293,1.293a1,1,0,0,0,1.414-1.414l-3-3a1,1,0,0,0-1.416,0l-3,3A1,1,0,0,0,9.707,5.707L11,4.414V8A1,1,0,0,0,12,9Z"></path></g></svg>
+                    <h1 class="px-2 font-semibold">Sunrise:</h1>
+                    <p>{{weather.sys.sunrise * 1000 | date:'H:mm'}}</p>
+                </div>
+                <div class="flex py-[5px]">
+                    <svg fill="#000000" class="h-[30px] w-[30px] " viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="0.00024000000000000003"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M7,15a5,5,0,0,1,10,0,1,1,0,0,1-2,0,3,3,0,0,0-6,0,1,1,0,0,1-2,0ZM17.293,8.293,16.586,9A1,1,0,1,0,18,10.414l.707-.707a1,1,0,0,0-1.414-1.414ZM22,15a1,1,0,0,0-1-1H20a1,1,0,0,0,0,2h1A1,1,0,0,0,22,15ZM4,14H3a1,1,0,0,0,0,2H4a1,1,0,0,0,0-2ZM6.707,8.293A1,1,0,0,0,5.293,9.707L6,10.414A1,1,0,1,0,7.414,9ZM4,18a1,1,0,0,0,1,1H19a1,1,0,0,0,0-2H5A1,1,0,0,0,4,18Zm13,4a1,1,0,0,0-1-1H8a1,1,0,0,0,0,2h8A1,1,0,0,0,17,22ZM12,1a1,1,0,0,0-1,1V5.586L9.707,4.293A1,1,0,0,0,8.293,5.707l3,3a1,1,0,0,0,1.414,0l3-3a1,1,0,1,0-1.414-1.414L13,5.586V2A1,1,0,0,0,12,1Z"></path></g></svg>
+                    <h1 class="px-2 font-semibold">Sunset:</h1>
+                    <p>{{weather.sys.sunset * 1000 | date:'H:mm'}}</p>
+                </div>
+                <div class="flex py-[5px]">
+                    <svg version="1.1" id="Icons" class="h-[30px] w-[30px] " xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:none;stroke:#000000;stroke-width:2.08;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} </style> <path class="st0" d="M25,13c0,8-9,15-9,15s-9-7-9-15c0-5,4-9,9-9S25,8,25,13z"></path> <circle class="st0" cx="16" cy="13" r="3"></circle> </g></svg>
+                    <h1 class="px-2 font-semibold">Geo Coords:</h1>
+                    <p>[{{ weather.coord.lat }}, {{ weather.coord.lon }}]</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="static inline-flex p-[35px] basis-3/4 px-5 justify-center ">
+            <svg class="h-[300px] w-[300px] " viewBox="0 0 1024 1024"  version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" stroke="#000000" stroke-width="10.24"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M512 512m-277.333333 0a277.333333 277.333333 0 1 0 554.666666 0 277.333333 277.333333 0 1 0-554.666666 0Z" fill="#EFD358"></path><path d="M85.333333 533.333333H42.666667a21.333333 21.333333 0 1 1 0-42.666666h42.666666a21.333333 21.333333 0 1 1 0 42.666666zM209.066667 230.4a21.269333 21.269333 0 0 1-15.082667-6.250667l-29.866667-29.866666a21.333333 21.333333 0 1 1 30.165334-30.165334l29.866666 29.866667A21.333333 21.333333 0 0 1 209.066667 230.4zM512 106.666667a21.333333 21.333333 0 0 1-21.333333-21.333334V42.666667a21.333333 21.333333 0 1 1 42.666666 0v42.666666a21.333333 21.333333 0 0 1-21.333333 21.333334zM814.933333 230.4a21.333333 21.333333 0 0 1-15.082666-36.416l29.866666-29.866667a21.333333 21.333333 0 1 1 30.165334 30.165334l-29.866667 29.866666a21.269333 21.269333 0 0 1-15.082667 6.250667zM981.333333 533.333333h-42.666666a21.333333 21.333333 0 1 1 0-42.666666h42.666666a21.333333 21.333333 0 1 1 0 42.666666z" fill="#EFD358"></path><path d="M810.666667 1002.666667H213.333333c-105.856 0-192-86.122667-192-192s86.144-192 192-192c17.322667 0 34.624 2.453333 51.669334 7.338666A256.128 256.128 0 0 1 490.666667 490.666667a255.786667 255.786667 0 0 1 232.533333 149.290666A189.653333 189.653333 0 0 1 810.666667 618.666667c105.856 0 192 86.122667 192 192s-86.144 192-192 192z" fill="#E0E0E0"></path></g></svg>        
+        </div>
+
+        
+    </div>
+</div>
+<ng-template #waiting>
+    <img src="https://images.app.goo.gl/UHfWo7Qv9jqH9a5N9" alt="" *ngIf="locationDenied" >
+    <div *ngIf="locationDeniedEnableCity">
+        <input class="border-teal-500 border pr-[68px] rounded p-1" type="text" #userInput placeholder="Enter city name">
+        <div>
+            <button class="bg-white text-black hover:bg-teal-500 hover:text-white transition duration-700 font-semibold p-1" (click)="getCity(userInput.value)" >Search</button>
+        </div>
+    </div>
+</ng-template>
